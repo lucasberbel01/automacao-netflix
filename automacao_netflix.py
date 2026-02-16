@@ -10,12 +10,17 @@ from datetime import datetime
 def arte_nome():
     nome = 'MARCELLA EU TE AMO <3'
     arte = text2art(nome)
+    print("-"*127)
     print(arte)
+    print("-"*127)
+
+def limpar_tela():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def programar_desligamento(): #* funcao usada para definir o horario de desligamento do PC
     while True:   
         
-        hora = input("Informe a hora que voce deseja desligar o computador no formato: 0000. Relogio no formato 24h. \n-")
+        hora = input("Informe a hora que voce deseja desligar o computador no formato: HHMM(EX: 1630). Relogio no formato 24h. \n-")
 
         if not hora.isdigit(): #verifica se é um numero
             print ("Caracteres informados invalidos! \nTente novamente.")
@@ -170,8 +175,9 @@ while True: #* loop para perguntar se desejamos programar o desligamento do pc
 
     elif quer_desligar == "s": #se sim, chama a funcao para programar a hora de desligar
         hora_desligar = programar_desligamento()
-
+        
     break
+
 
 
 if not os.path.exists('idioma.txt'): #* verifica se o arquivo idioma.txt ja existe
@@ -210,23 +216,22 @@ pular_intro, pular_ep, pular_recap = obter_caminhos_imagens(idioma) #configura o
 
 
 #* declaracao de variaveis globais
-contador = 120 # contador para o primeiro print
 var_controle = 1# variavel responsavel pelo loop principal
 contador_ep = 0# variavel que conta quantos episodios foram pulados
 
 input('Abra a Netflix e pressione "Enter" quando estiver pronto!') #input que espera a confirmacao do usuario para iniciar o programa
 print("Iniciando programa...")
+time.sleep(2)
+
 
 t = threading.Thread(target=menu_configuracoes) #thread com funcao menu_configuracoes()
 t.start()
 
+print('Para acessar o menu de configuracoes pressione "Enter".')
+print('Para verificar o historico de todas as acoes do programa acesse a pasta onde esta o arquivo .exe e procure pelo arquivo "historico.txt"')
+
 while var_controle != 0: #* loop principal
     
-    if contador == 120: # a cada 120 voltas (10 minutos) no loop o print aparece na tela
-        print('Para acessar o menu de configuracoes pressione "Enter".')
-        print('Para verificar o historico de todas as acoes do programa acesse a pasta onde esta o arquivo .exe e procure pelo arquivo "historico.txt"')
-        contador = 0
-
     if quer_desligar == "s": 
         desligar_pc(hora_desligar)
 
@@ -256,8 +261,7 @@ while var_controle != 0: #* loop principal
         except:
             pass
 
-    contador+=1
-    time.sleep(5)
+    time.sleep(3)
     
 print("Programa encerrado!")
 
