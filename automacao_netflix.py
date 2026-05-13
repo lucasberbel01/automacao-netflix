@@ -7,13 +7,6 @@ from art import text2art
 from pathlib import Path
 from datetime import datetime
 
-def arte_nome():
-    nome = 'MARCELLA EU TE AMO <3'
-    arte = text2art(nome)
-    print("-"*127)
-    print(arte)
-    print("-"*127)
-
 def limpar_tela():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -164,8 +157,6 @@ def contador_epsodios(contador_ep):
 
 #!---------------------------------------------------------------------------- M A I N --------------------------------------------------------------------------------------------------------------------
 
-arte_nome()
-
 while True: #* loop para perguntar se desejamos programar o desligamento do pc
     quer_desligar = input("Voce deseja programar o PC para desligar? (S/N) \n-").lower() #pergunta se quer desligar o PC e formata para lower case
 
@@ -264,5 +255,3 @@ while var_controle != 0: #* loop principal
     time.sleep(3)
     
 print("Programa encerrado!")
-
-#! MARCELLA EU TE AMOOOOOOOOOOOOOO MUITOOOOOOOOOOOOOOOOOOOOOOO<3
